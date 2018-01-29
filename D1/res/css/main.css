@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+html, body {
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2 {
+    color: #242424;
+}
+
+p {
+    color: #000;
+}
+
+#logo_container {
+    position: relative;
+    height: 500px;
+    background-color: #242424;
+    box-shadow: 0 5px 5px #5d5d5d;
+}
+
+#logo_content {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+#logo_content > img {
+    width: 300px;
+    height: 300px;
+    box-shadow: 0 0 25px #fff;
+}
+
+#logo_content > h1,
+#logo_content > h2 {
+    margin: 10px 0;
+    color: #fff;
+}
+
+#logo_content > h2 {
+    font-size: 1.3rem;
+}
+
+#main_nav {
+    text-align: center
+}
+
+#main_nav > img {
+    width: 75px;
+    height: 75px;
+    margin: 15px 0;
+}
+
+#main_container {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+#main_content {
+    border-left: 1px solid #bcbcbc;
+}
+
+#overview h1 {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #bcbcbc;
+}
+
+#overview .intro,
+#overview .agreement,
+#overview .dod {
+    padding-bottom: 25px;
+}
+
+#overview h2 {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+#overview p,
+#overview ul > li {
+    margin-left: 15px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+#overview ul {
+    padding-left: 15px;
+    list-style: circle;
+}
+
+#overview #pdf_par {
+    margin: 0;
+    padding: 0;
+}
+
+#nav_members {
+    padding: 10px 0;
+}
+
+#team_pictures_container {
+    padding-bottom: 10px;
+    text-align: center;
+    border-bottom: 1px solid #bcbcbc;
+}
+
+#team_pictures_container > .team_picture {
+    position: relative;
+    display: inline-block;
+    width: 48%;
+    margin: 5px;
+}
+
+#team_pictures_container > .team_picture > span {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    padding-right: 10px;
+    border-radius: 0 0 15px;
+    background-color: #242424;
+    color: #fff;
+}
+
+#team_pictures_container > .team_picture > img {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #242424;
+}
+
+.nav_custom > a {
+    border: 1px solid transparent;
+    color: #242424;
+}
+
+.nav_custom > a:hover {
+    border-color: #242424;
+}
+
+.nav_custom > .nav-link.active {
+    background-color: #242424;
+}
+
+.member_info > p,
+.member_details h2 {
+    font-size: 1rem;
+}
+
+.member_details > img {
+    width: 225px;
+    height: 225px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #242424;
+}
+
+.member_details h2 {
+    color: #000;
+}
+
+.member_details h2 > span {
+    font-weight: bold;
+    color: #242424;
+}
+
+.member_info {
+    padding: 15px;
+}
+
+.member_info > p {
+    margin: 25px 0;
+}
+
+.member_details {
+    display: flex;
+    flex-direction: row;
+    margin: 25px 0;
+}
+
+.member_details > div {
+    padding: 0 25px;
+}
