@@ -21,13 +21,13 @@ canvas = FigureCanvas(fig)
 
 
 # Call Figure method to add subplot, creates Axes
-ax1 = fig.add_subplot(211)
+ax1 = fig.add_subplot(121)
 
 # Use Axes method plot() to plot
 ax1.plot(t1, f(t1), 'bo', t2, f(t2), 'k')
 
 # repeat for second subplot
-ax2 = fig.add_subplot(212)
+ax2 = fig.add_subplot(122)
 ax2.plot(t2, np.cos(2*np.pi*t2), 'r--')
 
 # save
