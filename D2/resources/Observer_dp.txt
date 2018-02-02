@@ -1,0 +1,29 @@
+1. A FigureManager class is defined in the backend
+2. FigureManager is initialized with a toolbar, and function 'notify_axes_change(fig)' which updates the toolbar. notify_axes_change is then passed onto the canvas figure's function 'add_axobserver(func)', which adds the func to the list of axes observers (ax_observers). This essentially ensures that whenever the axes state of the figure change, func(self) is called, meaning notify_axes_change will update the toolbar whenever the axes is changed.
+
+one example of it working:
+
+- figure.clf() is called (clears the figure) 
+3. for each 'ax' in the figures axes, delaxes(ax) is called
+	4. inside delaxes, for each function func in ax_observers, call func(self) i.e. notify_axes_change(fig=self)
+5. Unless speicfied otherwise, clf() sets ax_observers to []
+
+
+relavant code for each step:
+1. https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/backend_bases.py
+	- line 129, 164
+
+2. https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/backends/backend_macosx.py (for mac osx)
+	- line 124-142, 152
+
+3. https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/figure.py
+	- line 1777 - add_axobserver
+	- 1271 - clf()
+	- 876 - delaxes
+
+
+justifcation/analysis:
+
+Matplotlib allows working with multiple axes, and you can create any number of axes to given figures. It keeps track of current axes, and all plotting commands apply to those current axes. For this reason, it is crucial that consistency is maintained between the relavant classes whenever the axes are changed, hence why the observer pattern was used here.
+
+This implementation has a small difference to the observer pattern from class/textbook in that instead of a having a list of observers and calling the observer's update function, it keeps a list of functions (notify_axes_change) and calls it with the parameter self in the figure. 
