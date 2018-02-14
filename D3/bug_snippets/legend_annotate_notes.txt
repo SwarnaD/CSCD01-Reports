@@ -1,0 +1,20 @@
+Annotations are not even checked/handled at the moment for legend generation.
+
+Items of note:
+
+1)legend.py line 1300
+- add annotations to list of handles
+	(for loop on lines 1307, 1312)
+	- annotations are stored in ax.text
+	- (ax is an Axes object
+
+2)need to make sure it passes the has_handler check (line 1326)
+- get_legend_handler (line 1322) references all the way to _default_handler_map (ln 805)
+	- need to add annotation here to this mapping (probably as Text)
+
+3) in legend_handler.py
+- need to add a class here like HandlerLine2D does
+	- probably call it HandlerText or HandlerAnnotation and we need to figure out the appropriate base classes
+	- need to study the other handlers like HandlerLine2D to emulate and make it for this
+
+
