@@ -15,7 +15,7 @@ handles, labels = ax1.get_legend_handles_labels()
 # following code does not work
 legend = fig.legend(handles, labels, bbox_to_anchor=(1, 1))
 plt.savefig('test.png', bbox_extra_artists=[legend], bbox_inches='tight')
-plt.show()
+#plt.show()
 
 
 
