@@ -697,6 +697,8 @@ def test_annotation_text():
     # appear on the legend with their image and label
     # note: the text itself does not appear on the legend,
     # only the arrow. The text itself is self-explanatory.
+    # However, if only text is passed, the image will be
+    # the text.
     fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.annotate("hello",
@@ -707,11 +709,49 @@ def test_annotation_text():
                             'color':'green'},
                 label="hello") 
     ax.annotate("world",
-                xy=(0.3, 0.1), 
-                xytext=(0.3, 0.9), 
+                xy=(0.3, 0.9), 
+                xytext=(0.3, 0.1), 
                 arrowprops={'arrowstyle':'<->',
                             'ls':'dashdot',
                             'color':'purple'},
-                label="world")    
+                label="world")
+    ax.annotate("short text",
+                xy=(0.5, 0.9), 
+                xytext=(0.5, 0.1),
+                label="short")    
+    ax.annotate("long text",
+                xy=(0.7, 0.9), 
+                xytext=(0.7, 0.1),
+                label="longest")    
+    
     ax.legend() 
     plt.show()
+
+
+@image_comparison(baseline_images=['annotation_text'],
+                  extensions=['png'])
+def test_annotation_no_line_text():
+    # tests that annotations with no line, text, or both
+    # appear on the legend with their image and label
+    # note: if no text, it will not appear in the legend
+    
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.annotate("no text",
+                xy=(0.1, 0.9), 
+                xytext=(0.1, 0.1), 
+                arrowprops={'arrowstyle':'-',
+                            'ls':'dashed'},
+                label="") 
+    ax.annotate("no line",
+                xy=(0.3, 0.1), 
+                xytext=(0.3, 0.9),
+                label="no line")
+    ax.annotate("no line or text",
+                xy=(0.5, 0.1), 
+                xytext=(0.5, 0.9),
+                label="")
+    
+    ax.legend() 
+    plt.show()
+    
