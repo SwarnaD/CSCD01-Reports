@@ -7,7 +7,8 @@ from matplotlib.testing.decorators import image_comparison
 @image_comparison(baseline_images=['simple_annotation'],
                   extensions=['png'])
 def test_simple_annotation():
-    # tests that simple annotations appear on the legend
+    # tests that a simple example graph with annotations
+    # appear on the legend
     x = np.arange(0.0, 15.0, 0.01)
     y = np.sin(0.3*np.pi*x)
     fig = plt.figure()
@@ -174,6 +175,8 @@ def test_annotation_colours():
 def test_annotation_text():
     # tests that annotations with different text
     # appear on the legend
+    # note: the text itself does not appear on the legend,
+    # only the arrow. The text itself is self-explanatory.
     fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.annotate("hello",
@@ -192,11 +195,3 @@ def test_annotation_text():
                 label="world")    
     ax.legend() 
     plt.show()
-
-
-#if __name__ == "__main__":
-    #test_simple_annotation()
-    #test_all_linestyles()
-    #test_all_arrowstyles()
-    #test_annotation_colours()
-    #test_annotation_text()
