@@ -21,8 +21,11 @@ Beiyang Liu
 Laine London
 
 Hajoon Choi
--	Debugging is an unbelievably valuable skill to have as a developer, and it can be just as, 	if not more important than the developer's ability to write code.
--	Having good test cases is very important to verify that the code functions according to    	the expectations, and is also useful for finding errors and defects.
--	Many of the issues have a common cause/background. (e.g. there were several bugs related 	to the legend and tight bbox option)
+-	Debugging is an unbelievably valuable skill to have as a developer, and it can be just as,
+    if not more important than the developer's ability to write code.
+-	Having good test cases is very important to verify that the code functions according to
+    the expectations, and is also useful for finding errors and defects.
+-	Many of the issues have a common cause/background. (e.g. there were several bugs related 
+    to the legend and tight bbox option)
 
 Leo Li
