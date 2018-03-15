@@ -732,66 +732,63 @@ class HandlerPolyCollection(HandlerBase):
 
 
 class HandlerText(HandlerBase):
-    def create_artists(self, legend, orig_handle,
-                       xdescent, ydescent, width, height, fontsize,
-                       trans):
+    """
+    Handler for ".Text" which are used by ".Annotations".
+    """
+    def create_artists(self, legend, orig_handle, xdescent, ydescent, width,
+                       height, fontsize, trans):
         p = Text(x=-xdescent, y=-ydescent,
                  text=orig_handle.get_text())
         self.update_prop(p, orig_handle, legend)
         p.set_transform(trans)
         p.set_fontsize(0.75*fontsize)
-        c = Rectangle(xy=(-xdescent,-ydescent), width=width, height=height,
+        c = Rectangle(xy=(-xdescent, -ydescent - (height/5)), width=width, height=7*height/5,
                       facecolor="none", edgecolor="none")
         c.set_transform(trans)
         p.set_clip_path(c)
         return[p]
 
+
 class HandlerFancyArrowPatch(HandlerBase):
-        def update_prop(self, legend_handle, orig_handle, legend):
-            self._update_prop(legend_handle, orig_handle)
-            legend_handle.set_arrowstyle(orig_handle.get_arrowstyle())
-            legend_handle.set_linestyle(orig_handle.get_linestyle())
-            #legend_handle.set_linewidth(orig_handle.get_linewidth())
-            legend_handle.set_mutation_aspect(orig_handle.get_mutation_aspect())
-            #legend_handle.set_dpi_cor(orig_handle.get_dpi_cor())
+    """
+    Handler for ".FancyArrow" which are used by ".Annotations".
+    """
+    def update_prop(self, legend_handle, orig_handle, legend):
+        self._update_prop(legend_handle, orig_handle)
+        legend_handle.set_arrowstyle(orig_handle.get_arrowstyle())
+        legend_handle.set_linestyle(orig_handle.get_linestyle())
+        legend_handle.set_mutation_aspect(orig_handle.get_mutation_aspect())
 
-        def create_artists(self, legend, orig_handle,
-                       xdescent, ydescent, width, height, fontsize,
-                       trans):
-        
-            p = FancyArrowPatch(posA=(-xdescent - (width/10), -ydescent + height/2),
-                                posB=(-xdescent + width + (width/10), -ydescent + height/2),
-                                mutation_scale=height*1.5)
-            self.update_prop(p, orig_handle, legend)
-            p.set_transform(trans)
-            return [p]
-
+    def create_artists(self, legend, orig_handle, xdescent, ydescent, width,
+                       height, fontsize, trans):
+    
+        p = FancyArrowPatch(posA=(-xdescent - (width/10), -ydescent +
+                                  height/2),
+                            posB=(-xdescent + width + (width/10), -ydescent +
+                                  height/2),
+                            mutation_scale=height*1.5)
+        self.update_prop(p, orig_handle, legend)
+        p.set_transform(trans)
+        return [p]
 
 
 class HandlerAnnotation(HandlerBase):
-        def create_artists(self, legend, orig_handle,
-                       xdescent, ydescent, width, height, fontsize,
-                       trans):
-            if (orig_handle.arrow_patch is not None):
-                arrow_handler = HandlerFancyArrowPatch()
-                p = arrow_handler.create_artists(legend,
-                                                     orig_handle.arrow_patch,
-                                                     xdescent,
-                                                     ydescent,
-                                                     width,
-                                                     height,
-                                                     fontsize,
-                                                     trans)
-            elif (orig_handle.get_text() != ""):
-                text_handler = HandlerText()
-                p = text_handler.create_artists(legend,
-                                                  orig_handle,
-                                                  xdescent,
-                                                  ydescent,
-                                                  width,
-                                                  height,
-                                                  fontsize,
-                                                  trans)
-            else:
-                p = Rectangle(xy=(-xdescent,-ydescent),width=width,height=height, facecolor="none", edgecolor="none")
-            return p
+    """
+    Handler for ".Annotation" instances.
+    """
+    def create_artists(self, legend, orig_handle, xdescent, ydescent, width,
+                       height, fontsize, trans):
+        if (orig_handle.arrow_patch is not None):
+            arrow_handler = HandlerFancyArrowPatch()
+            p = arrow_handler.create_artists(legend, orig_handle.arrow_patch,
+                                             xdescent, ydescent, width, height,
+                                             fontsize, trans)
+        elif (orig_handle.get_text() != ""):
+            text_handler = HandlerText()
+            p = text_handler.create_artists(legend, orig_handle, xdescent,
+                                            ydescent, width, height, fontsize,
+                                            trans)
+        else:
+            p = [Rectangle(xy=(-xdescent, -ydescent), width=width,
+                           height=height, facecolor="none", edgecolor="none")]
+        return p
