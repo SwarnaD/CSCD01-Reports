@@ -728,13 +728,12 @@ def test_annotation_text():
     plt.show()
 
 
-@image_comparison(baseline_images=['annotation_text'],
+@image_comparison(baseline_images=['annotation_no_line'],
                   extensions=['png'])
 def test_annotation_no_line_text():
     # tests that annotations with no line, text, or both
     # appear on the legend with their image and label
     # note: if no text, it will not appear in the legend
-    
     fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.annotate("no text",
@@ -751,7 +750,6 @@ def test_annotation_no_line_text():
                 xy=(0.5, 0.1), 
                 xytext=(0.5, 0.9),
                 label="")
-    
     ax.legend() 
     plt.show()
     
