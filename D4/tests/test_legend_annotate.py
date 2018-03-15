@@ -4,8 +4,7 @@ import matplotlib.pyplot as plt
 
 from matplotlib.testing.decorators import image_comparison
 
-@image_comparison(baseline_images=['simple_annotation'],
-                  extensions=['png'])
+@image_comparison(baseline_images=['simple_annotation'])
 def test_simple_annotation():
     x = np.arange(0.0, 15.0, 0.01)
     y = np.sin(0.3*np.pi*x)
@@ -31,8 +30,7 @@ def test_simple_annotation():
     ax.legend()
     #plt.show()
 
-@image_comparison(baseline_images=['all_linestyles'],
-                  extensions=['png'])
+@image_comparison(baseline_images=['all_linestyles'])
 def test_all_linestyles():
     fig = plt.figure()
     ax = fig.add_subplot(111)
@@ -68,8 +66,7 @@ def test_all_linestyles():
     ax.legend()
     #plt.show()
 
-@image_comparison(baseline_images=['all_arrowstyles'],
-                  extensions=['png'])
+@image_comparison(baseline_images=['all_arrowstyles'])
 def test_all_arrowstyles():
     fig = plt.figure()
     ax = fig.add_subplot(111)
@@ -141,8 +138,7 @@ def test_all_arrowstyles():
     ax.legend()
     #plt.show()
 
-@image_comparison(baseline_images=['annotation_colours'],
-                  extensions=['png'])
+@image_comparison(baseline_images=['annotation_colours'])
 def test_annotation_colours():
     fig = plt.figure()
     ax = fig.add_subplot(111)
@@ -172,8 +168,7 @@ def test_annotation_colours():
     ax.legend()
     #plt.show()
 
-@image_comparison(baseline_images=['annotation_text'],
-                  extensions=['png'])
+@image_comparison(baseline_images=['annotation_text'])
 def test_annotation_text():
     fig = plt.figure()
     ax = fig.add_subplot(111)
