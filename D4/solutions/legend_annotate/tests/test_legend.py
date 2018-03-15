@@ -718,17 +718,17 @@ def test_annotation_text():
     ax.annotate("short text",
                 xy=(0.5, 0.9), 
                 xytext=(0.5, 0.1),
-                label="short")    
+                label="short text")    
     ax.annotate("long text",
                 xy=(0.7, 0.9), 
                 xytext=(0.7, 0.1),
-                label="longest")    
+                label="long text")    
     
     ax.legend() 
     plt.show()
 
 
-@image_comparison(baseline_images=['annotation_no_line'],
+@image_comparison(baseline_images=['annotation_no_line_text'],
                   extensions=['png'])
 def test_annotation_no_line_text():
     # tests that annotations with no line, text, or both
@@ -736,20 +736,20 @@ def test_annotation_no_line_text():
     # note: if no text, it will not appear in the legend
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    ax.annotate("no text",
+    ax.annotate("",
                 xy=(0.1, 0.9), 
                 xytext=(0.1, 0.1), 
                 arrowprops={'arrowstyle':'-',
                             'ls':'dashed'},
-                label="") 
+                label="no text") 
     ax.annotate("no line",
                 xy=(0.3, 0.1), 
                 xytext=(0.3, 0.9),
                 label="no line")
-    ax.annotate("no line or text",
+    ax.annotate("",
                 xy=(0.5, 0.1), 
                 xytext=(0.5, 0.9),
-                label="")
+                label="no line or text")
     ax.legend() 
     plt.show()
     
