@@ -2,6 +2,18 @@ Swarnajyoti Datta
 
 Nikki L. Quibin
 
+-	Working on an open source and large-scale project requires a lot of
+    coordination. Therefore, it’s imperative that matplotlib had a guideline
+    and standard for contributing.
+-	Quality of tests are important to validate that a solution works as
+    opposed to just hoping it works.
+-	Fixing bugs in an open source project shouldn’t be a full-time thing,
+    rather, something that should be considered a hobby or honing programming
+    skills.
+-	Something that looks simple to fix can be really complicated; looks can be
+    deceiving, just like the matplotlib code.
+
+
 Junil Patel
 
 Beiyang Liu
