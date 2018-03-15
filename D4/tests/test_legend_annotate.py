@@ -4,16 +4,15 @@ import matplotlib.pyplot as plt
 
 from matplotlib.testing.decorators import image_comparison
 
-@image_comparison(baseline_images=['simple_annotation'])
+@image_comparison(baseline_images=['simple_annotation'],
+                  extensions=['png'])
 def test_simple_annotation():
+    # tests that simple annotations appear on the legend
     x = np.arange(0.0, 15.0, 0.01)
     y = np.sin(0.3*np.pi*x)
-
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    
     ax.plot(x, y, lw=2, label="sin(x)")
-    
     ax.annotate("",
                 xy=(1.6, 1.03), 
                 xytext=(8.4, 1.03), 
@@ -24,19 +23,19 @@ def test_simple_annotation():
                 xytext=(8.35, 1.0), 
                 arrowprops={'arrowstyle':'<->', 'ls':'dashed'}, 
                 label="amplitude")
-    
     ax.set_ylim(-1.5, 1.5)
-    
     ax.legend()
-    #plt.show()
+    plt.show()
 
-@image_comparison(baseline_images=['all_linestyles'])
+
+@image_comparison(baseline_images=['all_linestyles'],
+                  extensions=['png'])
 def test_all_linestyles():
+    # tests that annotations with different linestyles
+    # appear on the legend
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    
     ax.set_xlim(0, 1.7)
-    
     ax.annotate("",
                 xy=(0.1, 0.1), 
                 xytext=(0.1, 0.9), 
@@ -62,17 +61,18 @@ def test_all_linestyles():
                 xytext=(0.9, 0.9), 
                 arrowprops={'arrowstyle':'-', 'ls':(0, (1,5))}, 
                 label="offset, on-off-dash-seq")    
-    
     ax.legend()
-    #plt.show()
+    plt.show()
 
-@image_comparison(baseline_images=['all_arrowstyles'])
+
+@image_comparison(baseline_images=['all_arrowstyles'],
+                  extensions=['png'])
 def test_all_arrowstyles():
+    # tests that annotations with different arrowstyles
+    # appear on the legend
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    
     ax.set_ylim(0, 2.5)
-    
     ax.annotate("",
                 xy=(0.1, 0.1), 
                 xytext=(0.5, 0.1), 
@@ -133,16 +133,17 @@ def test_all_arrowstyles():
                 xytext=(0.5, 2.3), 
                 arrowprops={'arrowstyle':'wedge'}, 
                 label="wedge")    
-    
-    
     ax.legend()
-    #plt.show()
+    plt.show()
 
-@image_comparison(baseline_images=['annotation_colours'])
+
+@image_comparison(baseline_images=['annotation_colours'],
+                  extensions=['png'])
 def test_annotation_colours():
+    # tests that annotations with different colors
+    # appear on the legend
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    
     ax.annotate("",
                 xy=(0.1, 0.1), 
                 xytext=(0.1, 0.9), 
@@ -164,15 +165,17 @@ def test_annotation_colours():
                             'ls':'dashdot',
                             'color':'yellow'},
                 label="yellow")    
-    
     ax.legend()
-    #plt.show()
+    plt.show()
 
-@image_comparison(baseline_images=['annotation_text'])
+
+@image_comparison(baseline_images=['annotation_text'],
+                  extensions=['png'])
 def test_annotation_text():
+    # tests that annotations with different text
+    # appear on the legend
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    
     ax.annotate("hello",
                 xy=(0.1, 0.9), 
                 xytext=(0.1, 0.1), 
@@ -187,9 +190,9 @@ def test_annotation_text():
                             'ls':'dashdot',
                             'color':'purple'},
                 label="world")    
-    
     ax.legend() 
-    #plt.show()
+    plt.show()
+
 
 #if __name__ == "__main__":
     #test_simple_annotation()
