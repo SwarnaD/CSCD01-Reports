@@ -4,11 +4,12 @@ import matplotlib.pyplot as plt
 
 from matplotlib.testing.decorators import image_comparison
 
+
 @image_comparison(baseline_images=['simple_annotation'],
                   extensions=['png'])
 def test_simple_annotation():
     # tests that a simple example graph with annotations
-    # appear on the legend
+    # appear on the legend with their image and label
     x = np.arange(0.0, 15.0, 0.01)
     y = np.sin(0.3*np.pi*x)
     fig = plt.figure()
@@ -33,7 +34,7 @@ def test_simple_annotation():
                   extensions=['png'])
 def test_all_linestyles():
     # tests that annotations with different linestyles
-    # appear on the legend
+    # appear on the legend with their image and label
     fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.set_xlim(0, 1.7)
@@ -70,7 +71,7 @@ def test_all_linestyles():
                   extensions=['png'])
 def test_all_arrowstyles():
     # tests that annotations with different arrowstyles
-    # appear on the legend
+    # appear on the legend with their image and label
     fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.set_ylim(0, 2.5)
@@ -142,7 +143,7 @@ def test_all_arrowstyles():
                   extensions=['png'])
 def test_annotation_colours():
     # tests that annotations with different colors
-    # appear on the legend
+    # appear on the legend with their image and label
     fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.annotate("",
@@ -173,8 +174,8 @@ def test_annotation_colours():
 @image_comparison(baseline_images=['annotation_text'],
                   extensions=['png'])
 def test_annotation_text():
-    # tests that annotations with different text
-    # appear on the legend
+    # tests that annotations with different texts
+    # appear on the legend with their image and label
     # note: the text itself does not appear on the legend,
     # only the arrow. The text itself is self-explanatory.
     fig = plt.figure()
