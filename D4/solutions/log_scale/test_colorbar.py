@@ -315,28 +315,6 @@ def test_colorbar_axes_kw():
     plt.colorbar(orientation='horizontal', fraction=0.2, pad=0.2, shrink=0.5,
                  aspect=10, anchor=(0., 0.), panchor=(0., 1.))
 
-#@image_comparison(baseline_images=['simple_log_cbar'],
-                  #extensions=['png'])
-#def test_log_xticks():
-    ## test the undesired minor ticks do not appear if minor
-    ## xticks visibility is set to True
-    #data = [[0.1, 0.3],
-            #[0.6, 1]]  
-    #plt.rcParams['xtick.minor.visible'] = True
-    #plt.pcolormesh(data, norm=LogNorm())
-    #plt.colorbar()
-
-#@image_comparison(baseline_images=['simple_log_cbar'],
-                  #extensions=['png'])
-#def test_log_yticks_visible():
-    ## test the undesired minor ticks do not appear if minor
-    ## yticks visibility is set to True
-    #data = [[0.1, 0.3],
-            #[0.6, 1]]  
-    #plt.rcParams['ytick.minor.visible'] = True
-    #plt.pcolormesh(data, norm=LogNorm())
-    #plt.colorbar()
-
 @image_comparison(baseline_images=['simple_log_cbar'],
                   extensions=['png'])
 def test_log_minor_ticks_visible():
