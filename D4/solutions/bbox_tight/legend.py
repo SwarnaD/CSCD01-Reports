@@ -1177,7 +1177,7 @@ class Legend(Artist):
             self._bbox_to_anchor = Bbox.from_bounds(*bbox)
 
         if transform is None:
-            transform = BboxTransformTo(self.parent.bbox)
+            transform = self.parent.transFigure
 
         self._bbox_to_anchor = TransformedBbox(self._bbox_to_anchor,
                                                transform)
