@@ -17,6 +17,14 @@ Nikki L. Quibin
 Junil Patel
 
 Beiyang Liu
+-   Consider multiple solution rather than go full steam ahead with one to 
+    avoid wasting time. 
+-   In large open source projects such as Matplotlib, code may be redundant
+    as multiple unaffiliated contributers attempt to accomplish similar tasks
+    so always fully check if something similar has been implemented before making 
+    changed
+-   Functions in Matplotlib can be spread over many files and classes, check
+    over everything to get a full idea of what the code is doing
 
 Laine London
 
