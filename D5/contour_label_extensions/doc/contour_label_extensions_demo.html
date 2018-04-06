@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style/style.css" />
+    <title>contour_label_extensions_demo.py</title>
+  </head>
+
+<body>
+
+  <div class="body">
+
+    <div class="section" >
+  <h1>contour_label_extensions_demo.py<a class="headerlink" href="#matplotlib-pyplot-colorbar" title="Permalink to this headline">¶</a></h1>
+  <dl class="function">
+  <dt id="matplotlib.pyplot.colorbar">
+      <p class="info"><strong>New <code>plt.clabel</code> kwarg: <code>transform</code></strong></p>
+      <p class="info">
+          <code><a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.clabel.html">clabel()</a></code> can be called with the <code>transform=ax.transData|ax.transAxes|fig.transFigure|None</code> kwarg to determine which
+          coordinate system to use for the contour label positioning. Without the transform kwarg, the
+          default data coordinate system (this was what it was before this feature) is used.
+      </p>
+      <p class="info">
+          More information on <code><a href="https://matplotlib.org/2.0.0/users/transforms_tutorial.html">transforms</a></code>.
+      </p>
+      <p class="info">
+         Below is an example of using the <code> transform </code> kwarg to change coordinate systems. Notice that the manual locations
+         are different depending on the coordinate system but still yield the same results.
+      </p>
+
+  <div class="highlight-default notranslate"><div class="highlight"><pre>
+import matplotlib
+import numpy as np
+import matplotlib.cm as cm
+import matplotlib.mlab as mlab
+import matplotlib.pyplot as plt
+
+matplotlib.rcParams['xtick.direction'] = 'out'
+matplotlib.rcParams['ytick.direction'] = 'out'
+
+delta = 0.01
+x = np.arange(-4.0, 4.0, delta)
+y = np.arange(-3.0, 3.0, delta)
+X, Y = np.meshgrid(x, y)
+Z1 = mlab.bivariate_normal(X, Y, 1.0, 1.0, 0.0, 0.0)
+Z2 = mlab.bivariate_normal(X, Y, 1.5, 0.5, 1, 1)
+Z = 10.0 * (Z2 - Z1)
+
+# contour labels are set manually based off the data coordinate system
+# this is the default behaviour
+plt.figure()
+CS = plt.contour(X, Y, Z)
+manual_locations = [(-1, -1.4), (-0.62, -0.7), (-2, 0.5), (1.7, 1.2),
+                    (2.0, 1.4), (2.4, 1.7)]
+plt.clabel(CS, inline=1, fontsize=8, manual=manual_locations)
+plt.title("Labels at Selected Locations (Data Coordinate System)")
+
+# contour labels are set manually based off the axes coordinate system
+# transform param used to change coordinate systems
+plt.figure()
+CS = plt.contour(X, Y, Z)
+ax = plt.gca()
+manual_locations = [(0.4, 0.3), (0.47, 0.45), (0.2, 0.55), (0.7, 0.7),
+                    (0.72, 0.72), (0.8, 0.8)]
+plt.clabel(CS, inline=1, fontsize=8, manual=manual_locations,
+           transform=ax.transAxes)
+plt.title('Labels at Selected Locations (Axes Coordinate System)')
+
+plt.show()
+  </pre></div>
+  </div>
+
+  <figure>
+      <img src="./figs/clabel_transform_data.png"/>
+      <figcaption>
+          (<a href="./figs/clabel_transform_data.png" target="_blank">png</a>)
+      </figcaption>
+  </figure>
+  <figure>
+      <img src="./figs/clabel_transform_axes.png"/>
+      <figcaption>
+          (<a href="./figs/clabel_transform_axes.png" target="_blank">png</a>)
+      </figcaption>
+  </figure>
+
+  <p class="info"><strong>New positional coordinate arguments for <code>plt.clabel</code> using the <code>manual</code> kwarg.</strong></p>
+  <p class="info">
+        When creating a list of coordinates to pass in for manual locations of the contour labels, one coordinate and positional coordinate can
+        be passed instead. For example, a coordinate of <code>(0.5, [0])</code> will place the contour label at the x-coordinate of 0.5 and a
+        y-coordinate of the first contour it intersects. Notice that the positional coordinate is a one-element list. This is
+        to differentiate a normal xy-coordinate and a positional coordinate. In addition, the positioning is 0 based, so a positional coordinate
+        of <code>[0]</code> will be the first intersection, <code>[1]</code> will be the second, etc. Also, <code>[-1]</code> can be used to define
+        the last intersection.
+  </p>
+  <p class="info">
+      This works for different coordinate systems. So positional coordinates can be used with the <code>transform</code> param as seen in the
+      previous example.
+  </p>
+  <p class="info">
+      Below is an example of using positional coordinates to place the location of the contour labels. The figure is the same
+      figure generated in the previous example.
+  </p>
+
+  <div class="highlight-default notranslate"><div class="highlight"><pre>
+# contour labels are placed automatically given a x/y coordinate
+# the other coordinate is the nth-intersection where the label will be placed
+# 0 based index
+plt.figure()
+CS = plt.contour(X, Y, Z)
+manual_locations = [(-1, [0]), ([2], 0), (0, [2]), (2, [0]), ([0], 1)]
+plt.clabel(CS, inline=1, fontsize=8, manual=manual_locations)
+plt.title("Labels With Positional Arguments")
+
+plt.show()
+  </pre>
+  </div>
+</div>
+
+<figure>
+    <img src="./figs/positional_coordinates.png"/>
+    <figcaption>
+        (<a href="./figs/positional_coordinates.png" target="_blank">png</a>)
+    </figcaption>
+</figure>
+
+<p class="info">
+    Keywords: python, matplotlib, example, clabel, transform
+</p>
+<p class="info">
+    Documentation provided by GoonSquad - UTSC
+</p>
+</body>
