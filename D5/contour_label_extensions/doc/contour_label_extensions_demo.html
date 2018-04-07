@@ -90,12 +90,8 @@ plt.show()
         be passed instead. For example, a coordinate of <code>(0.5, [0])</code> will place the contour label at the x-coordinate of 0.5 and a
         y-coordinate of the first contour it intersects. Notice that the positional coordinate is a one-element list. This is
         to differentiate a normal xy-coordinate and a positional coordinate. In addition, the positioning is 0 based, so a positional coordinate
-        of <code>[0]</code> will be the first intersection, <code>[1]</code> will be the second, etc. Also, <code>[-1]</code> can be used to define
-        the last intersection.
-  </p>
-  <p class="info">
-      This works for different coordinate systems. So positional coordinates can be used with the <code>transform</code> param as seen in the
-      previous example.
+        of <code>[0]</code> will be the first intersection, <code>[1]</code> will be the second, etc. Also, a negative positional coordinate will
+        find an intersection starting from the last intersection. So <code>[-2]</code> will be the second last intersection.
   </p>
   <p class="info">
       Below is an example of using positional coordinates to place the location of the contour labels. The figure is the same
