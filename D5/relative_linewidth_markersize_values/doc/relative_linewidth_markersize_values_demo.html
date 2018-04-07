@@ -50,68 +50,12 @@ plt.title('Collection of lines created with strings given as linewidth')
 
 plt.show()
   </pre></div>
-
-  <p class="info">
-         Below is an example of using the new feature in a <code> LineCollection </code>.
-      </p>
-
-  <div class="highlight-default notranslate"><div class="highlight"><pre>
-import matplotlib.pyplot as plt
-from matplotlib.collections import LineCollection
-import numpy as np
-
-N = 7
-x= np.arange(N)
-ys = [x + i for i in x]
-
-fig,ax = plt.subplots()
-ax.set_xlim(np.min(x), np.max(x))
-ax.set_ylim(np.min(ys), np.max(ys))
-
-line_segments = LineCollection([np.column_stack([x,y]) for y in ys], linewidths=('xx-thin', 'x-thin',
-  'medium', 'thick', 'x-thick', 'xx-thick'))
-
-line_segments.set_array(x)
-ax.add_collection(line_segments)
-plt.title('Collection of lines created with strings given as linewidth')
-
-plt.show()
-  </pre></div>
-  </div>
-
   <figure>
       <img src="./figs/collection_example.PNG"/>
       <figcaption>
           (<a href="./figs/collection_example.PNG" target="_blank">png</a>)
       </figcaption>
   </figure>
-
-  <p class="info">
-         Below is an example of using the new feature in a <code>LineCollection</code>.
-      </p>
-
-  <div class="highlight-default notranslate"><div class="highlight"><pre>
-import matplotlib.pyplot as plt
-from matplotlib.collections import LineCollection
-import numpy as np
-
-N = 7
-x= np.arange(N)
-ys = [x + i for i in x]
-
-fig,ax = plt.subplots()
-ax.set_xlim(np.min(x), np.max(x))
-ax.set_ylim(np.min(ys), np.max(ys))
-
-line_segments = LineCollection([np.column_stack([x,y]) for y in ys], linewidths=('xx-thin', 'x-thin',
-  'medium', 'thick', 'x-thick', 'xx-thick'))
-
-line_segments.set_array(x)
-ax.add_collection(line_segments)
-plt.title('Collection of lines created with strings given as linewidth')
-
-plt.show()
-  </pre></div>
 
   <p class="info">
          Below is an example of using the new feature with a couple large markers and a thin line.
@@ -128,9 +72,6 @@ y = np.array([0,9])
 
 ax.plot(x, y, marker='o', markersize='xx-large', linewidth='thin')
 ax.set_title('Large marker with a thin line')
-
-
-plt.show()
 
 plt.show()
   </pre></div>
